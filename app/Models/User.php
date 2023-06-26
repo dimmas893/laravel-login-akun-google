@@ -10,12 +10,10 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public function socialAccounts()
+    {
+        return $this->hasMany(SocialAccount::class);
+    }
     protected $fillable = [
         'name', 'email', 'password',
     ];
